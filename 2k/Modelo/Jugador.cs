@@ -6,7 +6,7 @@ public class Jugador : IJugador
     private int rendimiento;
 
     // Método para calcular el rendimiento
-    private int CalcularRendimiento()
+    public int CalcularRendimiento()
     {
         Random rnd = new Random(); 
         return rnd.Next(1, 11);

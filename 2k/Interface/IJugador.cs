@@ -1,3 +1,3 @@
 public interface IJugador {
-    private int CalcularRendimiento();
+    public int CalcularRendimiento();
 }
