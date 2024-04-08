@@ -56,6 +56,8 @@ public class Equipo : IEquipos
         Console.WriteLine("Por favor, ingresa el nombre del Equipo: ");
         this.nombre = Console.ReadLine();
     }
+
+    //Método para seleccionar juagadores
     public void seleccionar_jugadores(List<IJugador> jugadores)
     {
         Console.WriteLine($"TURNO DEL EQUIPO {this.nombre} PARA ESCOGER: ");
@@ -79,6 +81,8 @@ public class Equipo : IEquipos
 
         Console.WriteLine("\n");
     }   
+
+    //Método para listar jugadores
     public void listar_jugadores()
     {
         Console.WriteLine($"Jugadores del quipo: {this.nombre}");
@@ -89,6 +93,8 @@ public class Equipo : IEquipos
         }              
     } 
 
+
+    //Método para sacar el rendimiento
     public void total_rendimiento()
     {
         rendimiento = 0;
