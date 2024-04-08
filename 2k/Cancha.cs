@@ -1,7 +1,7 @@
 public class Cancha{
     private IEquipos equipo1 = null;
     private IEquipos equipo2 = null;
-    private List<Jugador> jugadores = new List<Jugador>();
+    private List<IJugador> jugadores = new List<IJugador>();
 
     // Presentamos a los equipos
     public void crear_equipos(){
@@ -83,6 +83,7 @@ public class Cancha{
         IEquipos equipo_ganador = equipo1;
         if (equipo1.GetRendimiento() == equipo2.GetRendimiento()){
             Console.WriteLine($"Hay un empate entre los dos equipos, pierde el profe Duque");
+            return ;
         }else if(equipo2.GetRendimiento() > equipo1.GetRendimiento()){
             equipo_ganador = equipo2;
         }

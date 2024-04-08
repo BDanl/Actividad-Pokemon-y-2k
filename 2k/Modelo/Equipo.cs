@@ -3,13 +3,13 @@ using System;
 public class Equipo : IEquipos
 {
     private string nombre;
-    private List<Jugador> jugadores;
+    private List<IJugador> jugadores;
     private int rendimiento;
 
     // Constructor sin parámetros
     public Equipo()
     {
-        this.jugadores = new List<Jugador>();
+        this.jugadores = new List<IJugador>();
     }
 
     // Constructor con parámetros
@@ -17,7 +17,7 @@ public class Equipo : IEquipos
     {
         this.nombre = nombre;
         this.rendimiento = rendimiento;
-        this.jugadores = new List<Jugador>();
+        this.jugadores = new List<IJugador>();
     }
 
     // Getter para el nombre del equipo
@@ -28,13 +28,13 @@ public class Equipo : IEquipos
 
 
     // Getter para la lista de jugadores
-    public List<Jugador> GetJugadores()
+    public List<IJugador> GetJugadores()
     {
         return jugadores;
     }
 
     // Setter para la lista de jugadores
-    public void SetJugadores(List<Jugador> jugadores)
+    public void SetJugadores(List<IJugador> jugadores)
     {
         this.jugadores = jugadores;
     }
@@ -56,7 +56,7 @@ public class Equipo : IEquipos
         Console.WriteLine("Por favor, ingresa el nombre del Equipo: ");
         this.nombre = Console.ReadLine();
     }
-    public void seleccionar_jugadores(List<Jugador> jugadores)
+    public void seleccionar_jugadores(List<IJugador> jugadores)
     {
         Console.WriteLine($"TURNO DEL EQUIPO {this.nombre} PARA ESCOGER: ");
         int cont = 0;
@@ -72,8 +72,6 @@ public class Equipo : IEquipos
         Random rnd = new Random(); 
         int eleccion = rnd.Next(0,cont);
         Console.WriteLine($"Nombre: {jugadores[eleccion].GetNombre()}, Rendimiento: {jugadores[eleccion].GetRendimiento()}");
-
-        cont = 0;
 
         this.jugadores.Add(jugadores[eleccion]);
 
