@@ -12,10 +12,9 @@ public class Equipo : IEquipos
     }
 
     // Constructor con parámetros
-    public Equipo(string nombre, List<Jugador> jugadores, int rendimiento)
+    public Equipo(string nombre, int rendimiento)
     {
         this.nombre = nombre;
-        this.jugadores = jugadores;
         this.rendimiento = rendimiento;
     }
 
@@ -25,11 +24,6 @@ public class Equipo : IEquipos
         return nombre;
     }
 
-    // Setter para el nombre del equipo
-    public void SetNombre(string nombre)
-    {
-        this.nombre = nombre;
-    }
 
     // Getter para la lista de jugadores
     public List<Jugador> GetJugadores()
@@ -60,9 +54,40 @@ public class Equipo : IEquipos
         Console.WriteLine("Por favor, ingresa el nombre del Equipo: ");
         this.nombre = Console.ReadLine();
     }
-    public void eleccion_jugadores(List<Jugador> jugadores){}
-    public void listar_jugadores(List<Jugador> jugadores){}
+    public void eleccion_jugadores(List<Jugador> jugadores)
+    {
+        List<Jugador> jugadores_eleccion = new List<Jugador>(); 
+        Console.WriteLine($"TURNO DEL EQUIPO {this.nombre} PARA ESCOGER: ");
+        int cont = 0;
+        int capturar_jugador;
+        foreach (var jugador in jugadores)
+        {           
+            if (jugador.GetDisponibilidad()){
+                 Console.WriteLine($"{cont}. Nombre: {jugador.GetNombre()}, Rendimiento: {jugador.GetRendimiento()}");
+                cont ++;           
+            }              
+        }   
+             
+        
+        Console.WriteLine("Se escogio el jugador: ");  
+        Random rnd = new Random(); 
+        int eleccion = rnd.Next(0,cont);
+        capturar_jugador = eleccion;
+        Console.WriteLine($"Nombre: {jugadores[capturar_jugador].GetNombre()}, Rendimiento: {jugadores[capturar_jugador].GetRendimiento()}");
 
-   
+        cont = 0;
 
+        jugadores_eleccion.Add(jugadores[capturar_jugador]);
+
+        jugadores.RemoveAt(capturar_jugador);
+
+        this.jugadores = jugadores_eleccion;
+
+        Console.WriteLine("\n");
+    }   
+    public void listar_jugadores(List<Jugador> jugadores)
+    {
+        
+    }
 }
+    
