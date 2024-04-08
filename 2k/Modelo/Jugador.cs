@@ -26,18 +26,20 @@ public class Jugador : IJugador
     }
 
     // Setter para el nombre del jugador
-    public void SetNombre(string nombre){
+    public void SetNombre(string nombre)
+    {
         this.nombre = nombre;
     }
 
-// Getter para la disponibilidad del jugador
+    // Getter para la disponibilidad del jugador
     public bool GetDisponibilidad()
     {
         return disponible;
     }
 
     // Setter para el nombre del jugador
-    public void SetDisponibilidad(bool disponible){
+    public void SetDisponibilidad(bool disponible)
+    {
         this.disponible = disponible;
     }
 

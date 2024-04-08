@@ -9,6 +9,7 @@ public class Equipo : IEquipos
     // Constructor sin parámetros
     public Equipo()
     {
+        this.jugadores = new List<Jugador>();
     }
 
     // Constructor con parámetros
@@ -16,6 +17,7 @@ public class Equipo : IEquipos
     {
         this.nombre = nombre;
         this.rendimiento = rendimiento;
+        this.jugadores = new List<Jugador>();
     }
 
     // Getter para el nombre del equipo
@@ -54,40 +56,52 @@ public class Equipo : IEquipos
         Console.WriteLine("Por favor, ingresa el nombre del Equipo: ");
         this.nombre = Console.ReadLine();
     }
-    public void eleccion_jugadores(List<Jugador> jugadores)
+    public void seleccionar_jugadores(List<Jugador> jugadores)
     {
-        List<Jugador> jugadores_eleccion = new List<Jugador>(); 
         Console.WriteLine($"TURNO DEL EQUIPO {this.nombre} PARA ESCOGER: ");
         int cont = 0;
-        int capturar_jugador;
         foreach (var jugador in jugadores)
         {           
             if (jugador.GetDisponibilidad()){
                  Console.WriteLine($"{cont}. Nombre: {jugador.GetNombre()}, Rendimiento: {jugador.GetRendimiento()}");
                 cont ++;           
             }              
-        }   
-             
+        }                
         
         Console.WriteLine("Se escogio el jugador: ");  
         Random rnd = new Random(); 
         int eleccion = rnd.Next(0,cont);
-        capturar_jugador = eleccion;
-        Console.WriteLine($"Nombre: {jugadores[capturar_jugador].GetNombre()}, Rendimiento: {jugadores[capturar_jugador].GetRendimiento()}");
+        Console.WriteLine($"Nombre: {jugadores[eleccion].GetNombre()}, Rendimiento: {jugadores[eleccion].GetRendimiento()}");
 
         cont = 0;
 
-        jugadores_eleccion.Add(jugadores[capturar_jugador]);
+        this.jugadores.Add(jugadores[eleccion]);
 
-        jugadores.RemoveAt(capturar_jugador);
-
-        this.jugadores = jugadores_eleccion;
+        jugadores.RemoveAt(eleccion);
 
         Console.WriteLine("\n");
     }   
-    public void listar_jugadores(List<Jugador> jugadores)
+    public void listar_jugadores()
     {
-        
+        Console.WriteLine($"Jugadores del quipo: {this.nombre}");
+        foreach (var jugador in this.jugadores)
+        {      
+             Console.WriteLine($"Nombre: {jugador.GetNombre()}, Rendimiento: {jugador.GetRendimiento()}");
+                      
+        }              
+    } 
+
+    public void total_rendimiento()
+    {
+        rendimiento = 0;
+        Console.WriteLine($"Total rendimiento del equipo {this.nombre}: ");
+        foreach (var jugador in this.jugadores)
+        {      
+            rendimiento += jugador.GetRendimiento();        
+        } 
+        Console.WriteLine(rendimiento);
     }
+
 }
+
     
